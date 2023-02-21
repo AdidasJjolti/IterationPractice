@@ -233,12 +233,20 @@ int main()
 
 	string str = "abcba";
 	
-	list<string> strList;
-	list<string> revstrList;
+	list<char> strList;
+	list<char> revstrList;
+	stack<char> revstrStack;
 
 	for (int i = 0; i < str.length(); i++)
 	{
+		strList.push_back(i);
+		revstrStack.push(i);
+	}
 
+	for (int i = 0; i < revstrStack.size(); i++)
+	{
+		revstrList.push_back(revstrStack.top());
+		revstrStack.pop();
 	}
 
 	if (strList == revstrList)
