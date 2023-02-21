@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <algorithm>
+#include <stack>
+#include <list>
 using namespace std;
 
 int main()
@@ -125,10 +127,127 @@ int main()
 
 	// DNA
 
-	for (int i = 0; i < 18; i++)
+	for (int i = 0; i <= 18; i++)
 	{
-		
+		switch (i % 6)
+		{
+		case 0:
+			for (int j = 0; j < 7; j++)
+			{
+				cout << "*";
+			}
+			break;
+		case 1:
+		case 5:
+			for (int j = 0; j < 7; j++)
+			{
+				if (j == 1 || j == 5)
+				{
+					cout << "*";
+				}
+				else
+				{
+					cout << " ";
+				}
+			}
+			break;
+		case 2:
+		case 4:
+			for(int j = 0; j < 7; j++)
+			{
+				if (2 <= j && j <= 4)
+				{
+					cout << "*";
+				}
+				else
+				{
+					cout << " ";
+				}
+			}
+			break;
+		case 3:
+			for (int j = 0; j < 7; j++)
+			{
+				if (j == 3)
+				{
+					cout << "*";
+				}
+				else
+				{
+					cout << " ";
+				}
+			}
+			break;
+		}
+		//if (i % 6 == 0)
+		//{
+		//	for (int j = 0; j < 7; j++)
+		//	{
+		//		cout << "*";
+		//	}
+		//}
+		//else if (i % 6 == 1 || i % 6 == 5)
+		//{
+		//	for (int j = 0; j < 7; j++)
+		//	{
+		//		if (j == 1 || j == 5)
+		//		{
+		//			cout << "*";
+		//		}
+		//		else
+		//		{
+		//			cout << " ";
+		//		}
+		//	}
+		//}
+		//else if (i % 6 == 2 || i % 6 == 4)
+		//{
+		//	for (int j = 0; j < 7; j++)
+		//	{
+		//		if (2 <= j && j <= 4)
+		//		{
+		//			cout << "*";
+		//		}
+		//		else
+		//		{
+		//			cout << " ";
+		//		}
+		//	}
+		//}
+		//else
+		//{
+		//	for (int j = 0; j < 7; j++)
+		//	{
+		//		if (j == 3)
+		//		{
+		//			cout << "*";
+		//		}
+		//		else
+		//		{
+		//			cout << " ";
+		//		}
+		//	}
+		//}
 		cout << endl;
+	}
+
+	string str = "abcba";
+	
+	list<string> strList;
+	list<string> revstrList;
+
+	for (int i = 0; i < str.length(); i++)
+	{
+
+	}
+
+	if (strList == revstrList)
+	{
+		cout << "Same";
+	}
+	else
+	{
+		cout << "Not Same";
 	}
 }
 
