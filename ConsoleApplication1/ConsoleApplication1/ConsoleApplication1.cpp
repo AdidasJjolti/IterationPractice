@@ -42,60 +42,92 @@ int main()
 
 
 	// 삼각형
-	int _row3 = 9;
-	int _col3 = 9;
-
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		if (i < 5)
 		{
-			if (j < 4 - i)
+			for (int j = 0; j < 5; j++)
 			{
-				cout << " ";
+				if (j < 4 - i)
+				{
+					cout << " ";
+				}
+				else
+				{
+					cout << "*";
+				}
 			}
-			else
+		}
+		else
+		{
+			for (int j = 0; j < 5; j++)
 			{
-				cout << "*";
+				if (j < i - 4)
+				{
+					cout << " ";
+				}
+				else
+				{
+					cout << "*";
+				}
 			}
 		}
 		cout << endl;
 	}
 
-	for (int k = 0; k < 5; k++)
-	{
-		for (int l = 0; l < 5; l++)
-		{
-			if (l < k + 1)
-			{
-				cout << " ";
-			}
-			else
-			{
-				cout << "*";
-			}
-		}
-		cout << endl;
-	}
+	cout << endl;
+	cout << endl;
 
 	// 모래시계 Hourglass
 
 	for (int i = 0; i < 5; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		if (i == 0 || i == 4)
 		{
-			if (i == 0 || i == 4)
-			{
-				cout << "*";
-			}
-			else if(5 - i < j < i)
-			{
-				cout << " ";
-			}
-			else
+			for (int j = 0; j < 5; j++)
 			{
 				cout << "*";
 			}
 		}
+		else if (i == 2)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (j == i)
+				{
+					cout << "*";
+				}
+				else
+				{
+					cout << " ";
+				}
+			}
+		}
+		else
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (j == 0 || j == 4)
+				{
+					cout << " ";
+				}
+				else
+				{
+					cout << "*";
+				}
+			}
+		}
+		cout << endl;
+	}
+
+	cout << endl;
+	cout << endl;
+
+	// DNA
+
+	for (int i = 0; i < 18; i++)
+	{
+		
 		cout << endl;
 	}
 }
