@@ -5,7 +5,10 @@
 #include <algorithm>
 #include <stack>
 #include <list>
+#include <locale>
 using namespace std;
+
+void IsPalindrome(string str);
 
 int main()
 {
@@ -127,58 +130,64 @@ int main()
 
 	// DNA
 
-	for (int i = 0; i <= 18; i++)
-	{
-		switch (i % 6)
-		{
-		case 0:
-			for (int j = 0; j < 7; j++)
-			{
-				cout << "*";
-			}
-			break;
-		case 1:
-		case 5:
-			for (int j = 0; j < 7; j++)
-			{
-				if (j == 1 || j == 5)
-				{
-					cout << "*";
-				}
-				else
-				{
-					cout << " ";
-				}
-			}
-			break;
-		case 2:
-		case 4:
-			for(int j = 0; j < 7; j++)
-			{
-				if (2 <= j && j <= 4)
-				{
-					cout << "*";
-				}
-				else
-				{
-					cout << " ";
-				}
-			}
-			break;
-		case 3:
-			for (int j = 0; j < 7; j++)
-			{
-				if (j == 3)
-				{
-					cout << "*";
-				}
-				else
-				{
-					cout << " ";
-				}
-			}
-			break;
-		}
+	//int num;
+	//cout << "Insert Any number : ";
+	//cin >> num;
+
+	//for (int i = 0; i <= num * 6; i++)
+	//{
+	//	switch (i % 6)
+	//	{
+	//	case 0:
+	//		for (int j = 0; j < 7; j++)
+	//		{
+	//			cout << "*";
+	//		}
+	//		break;
+	//	case 1:
+	//	case 5:
+	//		for (int j = 0; j < 7; j++)
+	//		{
+	//			if (j == 1 || j == 5)
+	//			{
+	//				cout << "*";
+	//			}
+	//			else
+	//			{
+	//				cout << " ";
+	//			}
+	//		}
+	//		break;
+	//	case 2:
+	//	case 4:
+	//		for(int j = 0; j < 7; j++)
+	//		{
+	//			if (2 <= j && j <= 4)
+	//			{
+	//				cout << "*";
+	//			}
+	//			else
+	//			{
+	//				cout << " ";
+	//			}
+	//		}
+	//		break;
+	//	case 3:
+	//		for (int j = 0; j < 7; j++)
+	//		{
+	//			if (j == 3)
+	//			{
+	//				cout << "*";
+	//			}
+	//			else
+	//			{
+	//				cout << " ";
+	//			}
+	//		}
+	//		break;
+	//	}
+
+
 		//if (i % 6 == 0)
 		//{
 		//	for (int j = 0; j < 7; j++)
@@ -228,30 +237,55 @@ int main()
 		//		}
 		//	}
 		//}
-		cout << endl;
-	}
-
-	string str = "abcba";
+	//	cout << endl;
+	//}
 	
+	setlocale(LC_ALL, "Korean");
+	//string text = R"(대학생학대)";
+	string text;
+	bool quit = false;
+	//while (quit == false)
+	{
+		cout << "Type Any Word (If you want to finish, type in \"finish\") : ";
+		cin >> text;
+		if (text == "finish")
+		{
+			quit = true;
+		}
+		else
+		{
+			IsPalindrome(text);
+			cout << endl;
+		}
+		//cout << text;
+	}
+}
+
+void IsPalindrome(string str = " ")
+{
+
 	list<char> strList;
 	list<char> revstrList;
 	stack<char> revstrStack;
 
 	for (int i = 0; i < str.length(); i++)
 	{
-		strList.push_back(i);
-		revstrStack.push(i);
+		strList.push_back(str[i]);
+		revstrStack.push(str[i]);
 	}
 
-	for (int i = 0; i < revstrStack.size(); i++)
+	int size = revstrStack.size();
+
+	for (int i = 0; i < size; i++)
 	{
+		cout << revstrStack.top() << endl;
 		revstrList.push_back(revstrStack.top());
 		revstrStack.pop();
 	}
 
 	if (strList == revstrList)
 	{
-		cout << "Same";
+		cout << "Same!";
 	}
 	else
 	{
