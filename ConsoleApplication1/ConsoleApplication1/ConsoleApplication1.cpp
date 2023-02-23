@@ -9,6 +9,7 @@
 using namespace std;
 
 void IsPalindrome(string str);
+int Factorial(int n);
 
 int main()
 {
@@ -240,6 +241,55 @@ int main()
 	//	cout << endl;
 	//}
 	
+	for (int i = 1; i <= 19; i++)                   // 구구단 행렬의 전체행 수
+	{
+		if (i <= 9)
+		{
+			for (int j = 1; j <= 9; j++)            // 구구단 단별 뒤에서 곱해질 숫자  k x j
+			{
+				for (int k = 2; k <= 5; k++)        // 구구단 단별 앞에서 곱해질 숫자
+				{
+					cout << k << " x " << j << " = " << k * j << "\t";
+				}
+				cout << endl;
+				i++;
+			}
+		}
+		if (i == 10)
+		{
+			cout << endl << endl;
+		}
+		else
+		{
+			for (int j = 1; j <= 9; j++)
+			{
+				for (int k = 6; k <= 9; k++)
+				{
+					cout << k << " x " << j << " = " << k * j << "\t";
+				}
+				cout << endl;
+				i++;
+			}
+		}
+	}
+
+	cout << endl << endl;
+
+	for (int i = 1; i <= 3; i++)
+	{
+		for (int j = 2; j <= 9; j++)
+		{
+			for (int k = 3*i - 2; k < 3*i + 1; k++)
+			{
+				cout << k << " x " << j << " = " << k * j << "\t";
+			}
+			cout << endl;
+		}
+		cout << endl;
+	}
+
+	cout << "Result is : " << Factorial(5) << endl << endl;
+
 	setlocale(LC_ALL, "Korean");
 	//string text = R"(대학생학대)";
 	string text;
@@ -259,6 +309,27 @@ int main()
 		}
 		//cout << text;
 	}
+}
+
+int Factorial(int n)
+{
+	int result = 1;
+
+	if (n < 0)
+	{
+		cout << "No!";
+		return -1;
+	}
+	else if (n <= 1)
+	{
+		result *= 1;
+	}
+	else
+	{
+		result = n * Factorial(n - 1);
+	}
+
+	return result;
 }
 
 void IsPalindrome(string str = " ")
