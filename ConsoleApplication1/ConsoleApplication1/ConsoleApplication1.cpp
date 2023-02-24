@@ -9,7 +9,10 @@
 using namespace std;
 
 void IsPalindrome(string str);
-int Factorial(int n);
+unsigned long long int RecursiveFactorial(unsigned long long int n);
+unsigned long long int IterationFactorial(unsigned long long int n);
+unsigned long int RecursiveFibonacci(unsigned long int n);
+unsigned long int IterationFibonacci(unsigned long int n);
 
 int main()
 {
@@ -288,7 +291,32 @@ int main()
 		cout << endl;
 	}
 
-	cout << "Result is : " << Factorial(5) << endl << endl;
+	int start, end;
+	float time;
+	start = clock();
+	cout << "RecursiveFactorial Result is : " << RecursiveFactorial(50) << endl << endl;
+	end = clock();
+	time = (float)(end - start) / CLOCKS_PER_SEC;
+	cout << "Clocks_per_sec : " << CLOCKS_PER_SEC << endl << "Duration : " << time << endl << endl;
+
+	start = clock();
+	cout << "IterationFactorial Result is : " << IterationFactorial(50) << endl << endl;
+	end = clock();
+	time = (float)(end - start) / CLOCKS_PER_SEC;
+	cout << "Clocks_per_sec : " << CLOCKS_PER_SEC << endl << "Duration : " << time << endl << endl;
+
+
+	start = clock();
+	cout << "Fibonacci Result is : " << RecursiveFibonacci(5) << endl << endl;
+	end = clock();
+	time = (float)(end - start)/CLOCKS_PER_SEC;
+	cout << "Clocks_per_sec : " << CLOCKS_PER_SEC << endl << "Duration : " << time << endl << endl;
+
+	start = clock();
+	cout << "IterationFibonacci Result is : " << IterationFibonacci(5) << endl << endl;
+	end = clock();
+	time = (float)(end - start) / CLOCKS_PER_SEC;
+	cout << "Clocks_per_sec : " << CLOCKS_PER_SEC << endl << "Duration : " << time << endl << endl;
 
 	setlocale(LC_ALL, "Korean");
 	//string text = R"(대학생학대)";
@@ -311,22 +339,60 @@ int main()
 	}
 }
 
-int Factorial(int n)
+unsigned long int RecursiveFibonacci(unsigned long int n)
 {
-	int result = 1;
-
-	if (n < 0)
+	if (n <= 1)
 	{
-		cout << "No!";
-		return -1;
-	}
-	else if (n <= 1)
-	{
-		result *= 1;
+		return (unsigned long)n;
 	}
 	else
 	{
-		result = n * Factorial(n - 1);
+		return RecursiveFibonacci(n - 2) + RecursiveFibonacci(n - 1);
+	}
+}
+
+unsigned long int IterationFibonacci(unsigned long int n)
+{
+	if (n <= 1)
+	{
+		return (unsigned long)n;
+	}
+	else
+	{
+		unsigned long int a = 1;
+		unsigned long int b = 0;
+		unsigned long int result;
+
+		for (int i = 2; i < n + 1; i++)
+		{                            //i == 5
+			result = a + b;          //result = 3 + 2 
+			b = a;                   //b = 3
+			a = result;              //a = 5
+		}
+
+		return result;
+	}
+}
+
+unsigned long long int RecursiveFactorial(unsigned long long int n)
+{
+	if (n <= 1)
+	{
+		return 1;
+	}
+	else
+	{
+		return n * RecursiveFactorial(n - 1);
+	}
+}
+
+unsigned long long int IterationFactorial(unsigned long long int n)
+{
+	unsigned long long int result = 1;
+
+	for (int i = 2; i < n + 1; i++)
+	{
+		result *= i;
 	}
 
 	return result;
